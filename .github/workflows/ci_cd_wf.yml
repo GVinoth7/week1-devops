@@ -25,6 +25,7 @@ jobs:
       - name: Run tests with coverage
         run: |
           python -m pytest --cov=./ --cov-report=xml --cov-report=html
+          coverage xml -o coverage.xml
 
       - name: Generate coverage comment
         uses: MishaKav/pytest-coverage-comment@main
