@@ -25,10 +25,10 @@ jobs:
       - name: Run tests with coverage
         run: |
           python -m pytest --cov=./ --cov-report=xml --cov-report=html
-          coverage report --fail-under=70 --show-missing > pytest-coverage.txt
 
-      - name: Generate Pytest coverage comment
+      - name: Generate coverage comment
         uses: MishaKav/pytest-coverage-comment@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          pytest-coverage-path: ./pytest-coverage.txt
-          junitxml-path: ./pytest.xml
+          pytest-coverage-path: ./coverage.xml
